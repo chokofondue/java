@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/ex02_LogoutServlet")
@@ -14,10 +15,15 @@ public class ex02_LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Cookie cookie = new Cookie("nick","test");
+		//쿠키
+		/*Cookie cookie = new Cookie("nick","테스트");
 		cookie.setMaxAge(0);
-		response.addCookie(cookie);
+		response.addCookie(cookie);*/
+		
+		//세션
+		HttpSession session = request.getSession();
+		//세션 즉시 만료
+		session.invalidate();
 		
 		response.sendRedirect("ex02_Main.jsp");
 	}

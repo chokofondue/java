@@ -5,3 +5,5 @@ create table user_info(
 );
 
 insert into user_info values('admin_','12345','test');
+
+select * from user_info;
